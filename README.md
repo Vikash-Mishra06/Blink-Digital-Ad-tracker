@@ -1,44 +1,44 @@
-# Mini Ad Tracking System (Blink Digital Assignment)
+# Mini Ad Tracking System – Blink Digital Assignment
 
 ## Overview
-This project is a mini ad-tracking system inspired by real ad-tech platforms (like RedTrack).
-It tracks ad clicks, associates conversions using click attribution, and provides campaign-level reports.
+This project is a mini ad-tracking system inspired by real ad-tech platforms (e.g., RedTrack).
+It tracks ad clicks, associates conversions using click attribution, and provides campaign-level performance reports.
 
-The focus of this assignment is backend correctness, system thinking, security awareness,
-and a simple usable dashboard (not a UI design contest).
+The focus of this assignment is backend correctness, system thinking, security awareness, and a simple usable dashboard (not a UI design contest).
 
 ---
 
-## Deployed Links: 
+## Deployed Links
+Frontend (Vercel): https://blink-digital-ad-tracker.vercel.app  
+Backend (Railway): https://blink-digital-ad-tracker-production.up.railway.app  
 
-- Frontend (Vercel): https://blink-digital-ad-tracker.vercel.app
-- Backend (Railway): https://blink-digital-ad-tracker-production.up.railway.app
+---
 
 ## Features
 
-1. Click Tracking & Redirect
+### Click Tracking & Redirect
 - Generates a unique click_id for every ad click
-- Stores click metadata (source, campaign_id, ad_id, IP, user agent)
+- Stores click metadata (source, campaign_id, ad_id, IP address, user agent)
 - Redirects the user to the landing page
 - Appends click_id to the landing page URL
 - Redirect is non-blocking (works even if DB insert fails)
 
-2. Conversion Tracking
+### Conversion Tracking
 - Tracks conversion events using click_id
 - Supports event name, value, and currency
 - Uses last-click attribution
 - Validates click existence before storing conversion
 
-3. Reporting
-- Campaign-wise aggregated report
+### Reporting
+- Campaign-wise aggregated reports
 - Shows total clicks, total conversions, and total revenue
 - Optional filtering by traffic source (facebook, google, etc.)
 
-4. Frontend Dashboard
+### Frontend Dashboard
 - Generate tracking links
 - Copy tracking URL
-- Open tracking URL in new tab (redirect demo)
-- View campaign reports
+- Open tracking URL in a new tab (redirect demo)
+- View campaign performance reports
 - Filter reports by source
 - Minimal UI as per assignment instructions
 
@@ -70,7 +70,7 @@ GET /click
 
 Query Parameters:
 - lp: Landing page URL
-- source: Traffic source (facebook, google, etc.)
+- source: Traffic source
 - campaign_id: Campaign identifier
 - ad_id: Ad identifier
 
@@ -95,7 +95,7 @@ Request Body Example:
 ---
 
 Reporting:
-GET /report
+GET /report  
 GET /report?source=facebook
 
 Sample Response:
@@ -113,30 +113,29 @@ Sample Response:
 ## Environment Variables
 
 Backend (.env):
-PORT=5000
+PORT=5000  
 DATABASE_URL=postgresql://...
 
-Frontend (.env.local):
-NEXT_PUBLIC_API_BASE=http://localhost:5000
+Frontend (.env):
+NEXT_PUBLIC_API_BASE=https://blink-digital-ad-tracker-production.up.railway.app
 
 ---
 
 ## Local Setup
 
 Backend:
-cd backend
-npm install
-npm run dev
+cd backend  
+npm install  
+npm run dev  
 
 Frontend:
-cd frontend
-npm install
-npm run dev
+cd frontend  
+npm install  
+npm run dev  
 
 ---
 
 ## How to Test the Complete Flow
-
 1. Open the frontend dashboard
 2. Generate a tracking link
 3. Open the tracking link → user is redirected with click_id
@@ -155,5 +154,3 @@ npm run dev
 
 ## Author
 Vikash Mishra
-
-
