@@ -194,7 +194,7 @@ export default function Home() {
                   <tr className="bg-slate-50/50 text-slate-400 text-[11px] font-black uppercase tracking-wider border-b border-slate-100">
                     <th className="px-6 py-4">Campaign ID</th>
                     <th className="px-6 py-4 text-right">Clicks</th>
-                    <th className="px-6 py-4 text-right">Convs</th>
+                    <th className="px-6 py-4 text-right">Conversions</th>
                     <th className="px-6 py-4 text-right">Revenue</th>
                   </tr>
                 </thead>
