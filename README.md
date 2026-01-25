@@ -11,8 +11,8 @@ and a simple usable dashboard (not a UI design contest).
 
 ## Deployed Links: 
 
-Frontend (Vercel): https://blink-digital-ad-tracker.vercel.app
-Backend (Railway): https://blink-digital-ad-tracker-production.up.railway.app
+- Frontend (Vercel): https://blink-digital-ad-tracker.vercel.app
+- Backend (Railway): https://blink-digital-ad-tracker-production.up.railway.app
 
 ## Features
 
@@ -155,4 +155,5 @@ npm run dev
 
 ## Author
 Vikash Mishra
+
 
