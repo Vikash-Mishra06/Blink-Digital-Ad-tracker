@@ -1,9 +1,9 @@
-// src/routes/reportRoutes.js
 import express from "express";
-import { handleReport } from "../controllers/reportController.js";
+import { getReport } from "../controllers/reportController.js";
 
 const router = express.Router();
 
-router.get("/", handleReport);
+// GET /report
+router.get("/", getReport);
 
 export default router;
