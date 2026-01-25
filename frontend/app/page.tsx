@@ -18,6 +18,7 @@ export default function Home() {
 
   const [reportSource, setReportSource] = useState<string>("");
   const [reports, setReports] = useState<ReportRow[]>([]);
+  const [copied, setCopied] = useState<boolean>(false);
 
   const API = process.env.NEXT_PUBLIC_API_BASE as string;
 
@@ -26,7 +27,7 @@ export default function Home() {
     if (!landingPage) return;
 
     const url = `${API}/click?lp=${encodeURIComponent(
-      landingPage
+      landingPage,
     )}&source=${source}&campaign_id=${campaignId}&ad_id=${adId}`;
 
     setTrackingLink(url);
@@ -35,7 +36,7 @@ export default function Home() {
   // Fetch report data
   const fetchReport = async () => {
     const res = await fetch(
-      `${API}/report${reportSource ? `?source=${reportSource}` : ""}`
+      `${API}/report${reportSource ? `?source=${reportSource}` : ""}`,
     );
     const data = await res.json();
     setReports(data);
@@ -89,8 +90,36 @@ export default function Home() {
         </button>
 
         {trackingLink && (
-          <div className="bg-gray-100 p-2 break-all text-black">
-            {trackingLink}
+          <div className="bg-gray-100 p-3 break-all space-y-2 text-gray-400">
+            <div>{trackingLink}</div>
+
+            <div className="flex gap-3">
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(trackingLink);
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }}
+                className="bg-blue-600 text-white px-3 py-1 rounded cursor-pointer"
+              >
+                Copy URL
+              </button>
+
+              <a
+                href={trackingLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-green-600 text-white px-3 py-1 rounded"
+              >
+                Open Link
+              </a>
+            </div>
+          </div>
+        )}
+
+        {copied && (
+          <div className="fixed bottom-6 right-6 bg-black text-white px-4 py-2 rounded shadow">
+            Tracking link copied to clipboard
           </div>
         )}
       </section>
