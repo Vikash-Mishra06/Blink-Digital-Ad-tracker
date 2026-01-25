@@ -1,4 +1,3 @@
-// src/utils/validateURL.js
 export const isValidUrl = (url) => {
   try {
     const parsed = new URL(url);
