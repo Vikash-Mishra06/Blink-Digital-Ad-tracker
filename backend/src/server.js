@@ -12,6 +12,10 @@ query("SELECT 1")
   .then(() => console.log("DB test query successful"))
   .catch(console.error);
 
+app.get('/health', (req, res) => {
+  res.send({ message: "Server working fine" });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
